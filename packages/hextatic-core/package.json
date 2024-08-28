@@ -1,0 +1,24 @@
+{
+    "name": "@antoinefricker/hextatic-core",
+    "main": "src/index.ts",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/antoinefricker/hextatic.git"
+    },
+    "bugs": {
+        "url": "https://github.com/antoinefricker/hextatic.git/issues"
+    },
+    "homepage": "https://github.com/antoinefricker/hextatic.git#readme",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.3",
+        "vite": "^5.4.1"
+    }
+}

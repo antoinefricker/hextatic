@@ -1,3 +1,3 @@
 # Hextatic
 
-## An exploration of hexagonal grid
+## An exploration of hexagonal grids
