@@ -8,9 +8,25 @@
     "author": "Antoine Fricker <antoine@marmelab.com>",
     "license": "MIT",
     "scripts": {
-        "lint": "eslint ./packages/hextatic-core/src"
+        "lint": "eslint ./packages/**/src",
+        "lint:fix": "eslint ./packages/**/src --ext .ts,.tsx --fix",
+        "format": "prettier \"src/**/*.{ts,tsx}\" --write",
+        "prepare": "husky"
     },
+    "husky": {
+        "hooks": {
+            "commit-msg": "",
+            "pre-commit": "npx lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.+(js|ts|jsx|tsx)": "eslint --cache --fix",
+        "*.+(js|ts|jsx|tsx|md|json)": "prettier --write"
+    },
+    "dependencies": {},
     "devDependencies": {
+        "@commitlint/cli": "^19.4.1",
+        "@commitlint/config-conventional": "^19.4.1",
         "@stylistic/eslint-plugin": "^2.6.4",
         "@types/node": "^22.5.0",
         "@typescript-eslint/eslint-plugin": "^8.3.0",
@@ -20,6 +36,8 @@
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-prettier": "^5.2.1",
         "eslint-plugin-simple-import-sort": "^12.1.1",
+        "husky": "^9.1.5",
+        "lint-staged": "^15.2.9",
         "prettier": "^3.3.3"
     },
     "workspaces": [
