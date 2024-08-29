@@ -1,5 +1,6 @@
 {
-    "name": "view2d",
+    "name": "hextatic-2d",
+    "description": "2D hexagonal tile engine",
     "private": true,
     "version": "0.0.0",
     "type": "module",

@@ -12,8 +12,8 @@ An exploration of hexagonal grids
     -   [ ] cubic coordinates
     -   [ ] cubic distance
 -   [ ] add github CI automated tests
--   [ ] rename view2d to hextatic-2d
 -   [ ] create vec3 utilities
+-   [x] rename view2d to hextatic-2d
 -   [x] create basic hex utilities
 -   [x] create vec2Utilities
 -   [x] configure husky
