@@ -1,0 +1,85 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests on the specified node version
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Run Unit tests
+
+on:
+  pull_request:
+    paths-ignore:
+      - '.github/**'
+      - '!.github/workflows/tests.yml'
+      - 'documentation/**'
+  push:
+    branches:
+      - main
+  workflow_dispatch: ~
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Continuous Integration
+    outputs:
+      main_branch_name: ${{ steps.load_env_vars.outputs.main_branch_name }}
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: ⬇️ Install dependencies
+        id: install_deps
+        run: yarn install --frozen-lockfile
+
+      - name: ⚙️ Run Typecheck
+        id: run_typecheck
+        run: |
+          yarn --cwd packages/hextatic-core typecheck
+          yarn --cwd packages/hextatic-2d typecheck
+
+      - name: 🧪 Run Unit Tests
+        id: run_unit_tests
+        run: yarn --cwd packages/hextatic-core test
+
+      - name: Action Report
+        run: |
+          echo "| Job name | status |" >> $GITHUB_STEP_SUMMARY
+          echo "| - | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⬇️ Install dependencies | ${{ steps.install_deps.conclusion }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⚙️ Run Check Typescripts | ${{ steps.run_typecheck.conclusion }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🧪 Run Unit Tests | ${{ steps.run_unit_tests.conclusion }} |" >> $GITHUB_STEP_SUMMARY
+
+  deploy:
+    name: Deploy after CI
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: contains(fromJson('["refs/heads/develop", "refs/heads/main"]'), github.event.ref)
+    steps:
+      - name: 'Launch deploy'
+        run: |
+          case "${GITHUB_REF}" in
+            "refs/heads/develop")
+              ENV="dev"
+              ;;
+            "refs/heads/${MAIN_BRANCH_NAME}")
+              ENV="preprod"
+              ;;
+          esac
+          echo "gh workflow run deploy.yml --ref ${GITHUB_REF} -F branch_or_tag=${GITHUB_REF} -F environment=${ENV} -F skip_ci=false --repo=${GITHUB_REPOSITORY}"
+          gh workflow run "deploy.yml" \
+            --repo="${GITHUB_REPOSITORY}" \
+            --ref="${GITHUB_REF}" \
+            -F branch_or_tag="${GITHUB_REF}" \
+            -F environment="${ENV}" \
+            -F skip_ci="false"
+        env:
+          GITHUB_REF: ${{ github.event.ref }}
+          MAIN_BRANCH_NAME: ${{ needs.test.outputs.main_branch_name }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
