@@ -1,5 +1,5 @@
-import { Application, Sprite, Assets, Text } from 'pixi.js';
 import { version } from '@antoinefricker/hextatic-core';
+import { Application, Assets, Sprite, Text } from 'pixi.js';
 
 const app = new Application();
 

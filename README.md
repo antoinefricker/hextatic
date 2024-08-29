@@ -11,7 +11,10 @@ An exploration of hexagonal grids
 -   [ ] create coordinates utilities
     -   [ ] cubic coordinates
     -   [ ] cubic distance
--   [ ] create vec3Utilities
--   [x] create vec2Utilities
--   [x] install vitest in hextatic-core
+-   [ ] add github CI automated tests
 -   [ ] rename view2d to hextatic-2d
+-   [ ] create vec3 utilities
+-   [x] create basic hex utilities
+-   [x] create vec2Utilities
+-   [x] configure husky
+-   [x] install vitest in hextatic-core
