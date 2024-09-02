@@ -11,7 +11,8 @@
         "lint": "eslint ./packages/**/src",
         "lint:fix": "eslint ./packages/**/src --ext .ts,.tsx --fix",
         "format": "prettier \"src/**/*.{ts,tsx}\" --write",
-        "prepare": "husky"
+        "prepare": "husky",
+        "gh": "open https://github.com/antoinefricker/hextatic.git"
     },
     "husky": {
         "hooks": {
@@ -38,6 +39,7 @@
         "eslint-plugin-simple-import-sort": "^12.1.1",
         "husky": "^9.1.5",
         "lint-staged": "^15.2.9",
+        "open": "^10.1.0",
         "prettier": "^3.3.3"
     },
     "workspaces": [
