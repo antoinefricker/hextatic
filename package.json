@@ -11,6 +11,8 @@
         "lint": "eslint ./packages/**/src",
         "lint:fix": "eslint ./packages/**/src --ext .ts,.tsx --fix",
         "format": "prettier \"src/**/*.{ts,tsx}\" --write",
+        "test": "yarn workspaces run test",
+        "typecheck": "yarn workspaces run typecheck",
         "prepare": "husky",
         "gh": "open https://github.com/antoinefricker/hextatic.git"
     },
