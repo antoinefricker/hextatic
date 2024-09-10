@@ -4,7 +4,7 @@ import { generateRectangularBoard } from './rectangularGenerator';
 
 describe('RectangularGenerator', () => {
     it('should generate a rectangular board of 2 x 2', () => {
-        const board = generateRectangularBoard(2, 2);
+        const board = generateRectangularBoard(2, 2, 10);
 
         const expected = [
             [0, 0, 0],
@@ -17,7 +17,7 @@ describe('RectangularGenerator', () => {
     });
 
     it('should generate a rectangular board of 8 x 5', () => {
-        const board = generateRectangularBoard(8, 5);
+        const board = generateRectangularBoard(8, 5, 10);
 
         const expected = [
             [0, 0, 0],
