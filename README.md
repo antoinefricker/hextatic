@@ -6,9 +6,9 @@ An exploration of hexagonal grids
 
 -   [ ] [boardUtils] hexagonal board
 -   [ ] [cubicUtils] cubic distance
--   [ ] [boardUtils] rectangular board
--   [ ] [cubicUtils] cubic to 2D space
--   [ ] [cubicUtils] cubic coordinates
+-   [x] [boardUtils] rectangular board
+-   [x] [cubicUtils] cubic to 2D space
+-   [x] [cubicUtils] cubic coordinates
 -   [x] add github CI automated tests
 -   [x] create vec3 utilities
 -   [x] rename view2d to hextatic-2d
