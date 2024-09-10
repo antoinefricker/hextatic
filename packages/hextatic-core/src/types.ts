@@ -7,4 +7,7 @@ export type Vec3Object = { x: number; y: number; z: number };
 export type Board = {
     /** tiles cubic coordinates */
     tiles: Vec3[];
+    cols: number;
+    rows: number;
+    radius: number;
 };

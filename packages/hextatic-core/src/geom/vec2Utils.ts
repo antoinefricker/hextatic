@@ -22,3 +22,5 @@ export const distance = ([x1, y1]: Vec2, [x2, y2]: Vec2): number => Math.hypot(x
 
 /** computes the angle in radians with respect to the positive x-axis */
 export const getAngle = ([x, y]: Vec2): number => Math.atan2(-y, -x) + Math.PI;
+
+export const permutate = ([x, y]: Vec2): Vec2 => [y, x];
