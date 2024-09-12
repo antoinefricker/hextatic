@@ -5,7 +5,8 @@ An exploration of hexagonal grids
 ### Roadmap
 
 -   [ ] [boardUtils] hexagonal board
--   [ ] [cubicUtils] cubic distance
+-   [x] board reset axis origin
+-   [x] [cubicUtils] cubic distance
 -   [x] [boardUtils] rectangular board
 -   [x] [cubicUtils] cubic to 2D space
 -   [x] [cubicUtils] cubic coordinates
