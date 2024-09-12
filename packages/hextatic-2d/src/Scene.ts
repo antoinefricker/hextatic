@@ -14,5 +14,5 @@ window.addEventListener('resize', resizeHandler);
 resizeHandler();
 
 const board = new Board2D();
-board.position.set(100, 100);
+board.position.set(0, 0);
 app.stage.addChild(board);

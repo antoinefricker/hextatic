@@ -18,7 +18,10 @@ export const add = ([x1, y1, z1]: Vec3, [x2, y2, z2]: Vec3): Vec3 => [x1 + x2, y
 
 export const minus = ([x1, y1, z1]: Vec3, [x2, y2, z2]: Vec3): Vec3 => [x1 - x2, y1 - y2, z1 - z2];
 
-export const distance = ([x1, y1, z1]: Vec3, [x2, y2, z2]: Vec3): number => Math.hypot(x1 - x2, y1 - y2, z1 - z2);
+export const distance = (v1: Vec3, v2: Vec3) => {
+    const [q, r, s] = minus(v1, v2);
+    return (Math.abs(q) + Math.abs(r) + Math.abs(s)) / 2;
+};
 
 export const setFromSphericalCoords = (radius: number, phi: number, theta: number): Vec3 => {
     const sinPhiRadius = Math.sin(phi) * radius;
