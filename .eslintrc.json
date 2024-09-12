@@ -28,14 +28,6 @@
             }
         ],
         "no-unused-vars": "off",
-        "@typescript-eslint/consistent-type-imports": [
-            "error",
-            {
-                "fixStyle": "inline-type-imports"
-            }
-        ],
-        "no-unused-expressions": "off",
-        "@typescript-eslint/no-unused-expressions": ["error", { "allowTernary": true }],
         "@typescript-eslint/no-unused-vars": [
             "warn",
             {
@@ -45,6 +37,15 @@
                 "ignoreRestSiblings": true
             }
         ],
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "fixStyle": "inline-type-imports"
+            }
+        ],
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": ["error", { "allowTernary": true }],
+
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
         "no-irregular-whitespace": [

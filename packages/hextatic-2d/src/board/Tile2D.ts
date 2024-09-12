@@ -1,5 +1,4 @@
-import { coords, hex, vec2, type Vec3 } from '@antoinefricker/hextatic-core';
-import { getHexSize, getHexSpacing } from '@antoinefricker/hextatic-core/src/geom/hexUtils';
+import { hex, vec2, type Vec3 } from '@antoinefricker/hextatic-core';
 import { Container, Graphics } from 'pixi.js';
 
 import { CubicCoordsDebug } from './CubicCoordsDebug';
@@ -7,20 +6,10 @@ import { CubicCoordsDebug } from './CubicCoordsDebug';
 export class Tile2D extends Container {
     public coords: Vec3;
 
-    constructor(cubicCoords: Vec3, radius: number, index: number) {
+    constructor(cubicCoords: Vec3, radius: number) {
         super();
 
         this.coords = cubicCoords;
-
-        const hexSize = getHexSize(radius);
-        const hexSpacing = getHexSpacing(radius);
-
-        const d2Coords = coords.cubicToGrid(cubicCoords);
-        const position = vec2.multiply(d2Coords, [hexSpacing[0], 0.5 * hexSpacing[1]]);
-        const offset = vec2.scale(hexSize, 0.5);
-        const [x, y] = vec2.add(position, offset);
-
-        this.position.set(x, y);
 
         const ground = new Graphics();
         for (let index = 0; index <= 6; ++index) {
