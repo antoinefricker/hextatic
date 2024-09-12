@@ -6,6 +6,7 @@ import { Container, Graphics } from 'pixi.js';
 import { Button } from './Button';
 import { DemoStrategy } from './demoStrategy/DemoStrategy';
 import { ShowAxisDemo } from './demoStrategy/ShowAxis';
+import { ShowDistanceDemo } from './demoStrategy/ShowDistanceDemo';
 import { Tile2D } from './Tile2D';
 
 export class Board2D extends Container {
@@ -19,7 +20,7 @@ export class Board2D extends Container {
         super();
 
         this.demo = new DemoStrategy();
-        this.setDemoMode('showAxis');
+        this.setDemoMode('distance');
 
         this.board = generateRectangularBoard(28, 11, 40);
 
@@ -27,9 +28,13 @@ export class Board2D extends Container {
         this.map.position.set(100, 100);
         this.addChild(this.map);
 
-        const showAxisButton = new Button(250, 'Show axis', () => this.setDemoMode('showAxis'));
+        const showAxisButton = new Button(160, 'Axis', () => this.setDemoMode('axis'));
         showAxisButton.position.set(10, 10);
         this.addChild(showAxisButton);
+
+        const showDistanceButton = new Button(160, 'Distance', () => this.setDemoMode('distance'));
+        showDistanceButton.position.set(10, 40);
+        this.addChild(showDistanceButton);
 
         this.redrawCells();
     }
@@ -60,8 +65,10 @@ export class Board2D extends Container {
         this.map.addChild(debug);
     }
 
-    private setDemoMode(mode: 'showAxis' | 'resetCenter' | 'showDistance'): void {
+    private setDemoMode(mode: 'axis' | 'distance'): void {
         switch (mode) {
+            case 'distance':
+                return this.demo.setStrategy(new ShowDistanceDemo(this));
             default:
                 return this.demo.setStrategy(new ShowAxisDemo(this));
         }

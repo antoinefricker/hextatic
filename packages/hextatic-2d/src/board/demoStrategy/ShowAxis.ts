@@ -18,20 +18,12 @@ export class ShowAxisDemo implements IDemoStrategy {
         this.board.cells.map((cell) => {
             const [q, r, s] = cubic;
             const [cellQ, cellR, cellS] = cell.coords;
-            if (cellQ === q && cellR === r && cellS === s) {
-                cell.tint = null;
-                return;
-            } else if (cellQ === q) {
-                cell.tint = cubicSettings.q.color;
-                return;
-            } else if (cellR === r) {
-                cell.tint = cubicSettings.r.color;
-                return;
-            } else if (cellS === s) {
-                cell.tint = cubicSettings.s.color;
-                return;
-            }
-            cell.tint = null;
+
+            if (cellQ === q && cellR === r && cellS === s) cell.tint = null;
+            else if (cellQ === q) cell.tint = cubicSettings.q.color;
+            else if (cellR === r) cell.tint = cubicSettings.r.color;
+            else if (cellS === s) cell.tint = cubicSettings.s.color;
+            else cell.tint = null;
         });
         return;
     }

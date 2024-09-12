@@ -23,4 +23,4 @@ export class Button extends Container {
     }
 }
 
-const height = 30;
+const height = 24;
