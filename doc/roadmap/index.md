@@ -29,6 +29,7 @@
 
 -   [x] Rectangular boards
 -   [x] Hexagonal boards
+-   [ ] Define board center / set origin on this tile/position
 -   [ ] Neighbour to array index utilities
 -   [ ] Map generator services
     -   [ ] Heatmap
@@ -40,6 +41,7 @@
 
 #### CI/CD, tooling chore
 
+-   [ ] Automatically publish new package version
 -   [ ] Resource links page
 -   [ ] Polish to a clean project package
 -   [ ] Study package barrel imports, determine export structure accordingly
