@@ -2,13 +2,13 @@ import {
     coords,
     generateHexBoard,
     generateRectangularBoard,
+    getBoardSize,
     type Vec2,
     vec2,
     type Vec3,
     vec3,
 } from '@antoinefricker/hextatic-core';
 import { type Board } from '@antoinefricker/hextatic-core';
-import { getBoardSize } from '@antoinefricker/hextatic-core/src/geom/boardUtils';
 import { getHexSize, getHexSpacing } from '@antoinefricker/hextatic-core/src/geom/hexUtils';
 import { Container, Graphics } from 'pixi.js';
 
@@ -25,7 +25,6 @@ export class Board2D extends Container {
 
     private _model: Board;
     private _cells: Tile2D[];
-    private _origin: Vec3 = [0, 0, 0];
 
     private demo: DemoStrategy;
 

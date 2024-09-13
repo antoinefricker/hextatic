@@ -3,9 +3,13 @@
 #### 2D Demo
 
 -   [ ] Clean structure
+    -   [ ] Add `TODO` comments
 
 #### Hexagonal grid utilities
 
+-   [ ] I/O utilities
+    -   [ ] Import
+    -   [ ] Export
 -   [ ] Grid utilities
     -   [x] Tile distance
     -   [ ] Tile configuration structure
@@ -21,13 +25,18 @@
 
 -   [x] Cubic to 2D space
 
-#### Board generators
+#### Board utilities
 
 -   [x] Rectangular boards
 -   [x] Hexagonal boards
+-   [ ] Neighbour to array index utilities
 -   [ ] Map generator services
     -   [ ] Heatmap
     -   [ ] Terrain generator
+
+#### Documentation
+
+-   [ ] To be done later when structure stabilizes
 
 #### CI/CD, tooling chore
 

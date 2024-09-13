@@ -1,4 +1,4 @@
-export * from './board/boardUtils';
+export * from './geom/boardUtils';
 export * as board from './geom/boardUtils';
 export * as coords from './geom/coordinates';
 export * as hex from './geom/hexUtils';
