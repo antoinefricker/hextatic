@@ -1,28 +1,40 @@
 # Roadmap
 
-## Next steps
+#### 2D Demo
 
-## Completed
-
-#### Board generators
-
--   [x] Rectangular boards
--   [x] Hexagonal boards
-
-#### 2D display
-
--   [x] cubic to 2D space
+-   [ ] Clean structure
 
 #### Hexagonal grid utilities
 
 -   [ ] Grid utilities
     -   [x] Tile distance
+    -   [ ] Tile configuration structure
+    -   [ ] Tile rotation
+    -   [ ] Neighbours and utilities
+    -   [ ] Pathfinding service
+    -   [ ] Vision service
 -   [x] 3-dimension vector utilities `vec3`
 -   [x] 2-dimension vector utilities `vec2`
--   [x] hexagonal tiles utilities `hex`
+-   [x] Hexagonal tiles utilities `hex`
+
+#### 2D display
+
+-   [x] Cubic to 2D space
+
+#### Board generators
+
+-   [x] Rectangular boards
+-   [x] Hexagonal boards
+-   [ ] Map generator services
+    -   [ ] Heatmap
+    -   [ ] Terrain generator
 
 #### CI/CD, tooling chore
 
--   [x] testing library
--   [x] github CI automated tests
--   [x] install git hooks services [husky](https://github.com/typicode/husky)
+-   [ ] Resource links page
+-   [ ] Polish to a clean project package
+-   [ ] Study package barrel imports, determine export structure accordingly
+-   [ ] Get demo clean, name subpackage accordingly
+-   [x] Testing library
+-   [x] Github CI automated tests
+-   [x] Install git hooks services [husky](https://github.com/typicode/husky)
