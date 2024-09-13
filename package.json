@@ -1,11 +1,14 @@
 {
     "name": "hextatic",
-    "private": true,
+    "private": false,
     "version": "1.0.0",
-    "description": "An exploration of hexagonal grids",
+    "description": "Basic tool for flat hexagonal grids",
     "main": "index.js",
-    "repository": "https://github.com/antoinefricker/hextatic.git",
-    "author": "Antoine Fricker <antoine@marmelab.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/antoinefricker/hextatic.git"
+    },
+    "author": "Antoine Fricker <antoine.fricker@gmail.com>",
     "license": "MIT",
     "scripts": {
         "lint": "eslint ./packages/**/src",
