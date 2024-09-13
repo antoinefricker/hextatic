@@ -5,6 +5,8 @@ export type Vec3 = [number, number, number, ...unknown[]];
 export type Vec3Object = { x: number; y: number; z: number };
 
 export type Board = {
+    /** cubic coordinates origin */
+    origin: Vec3;
     /** tiles cubic coordinates */
     tiles: Vec3[];
     cols: number;

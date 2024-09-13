@@ -1,10 +1,19 @@
-import { coords, generateRectangularBoard, type Vec2, vec2, type Vec3, vec3 } from '@antoinefricker/hextatic-core';
+import {
+    coords,
+    generateHexBoard,
+    generateRectangularBoard,
+    type Vec2,
+    vec2,
+    type Vec3,
+    vec3,
+} from '@antoinefricker/hextatic-core';
 import { type Board } from '@antoinefricker/hextatic-core';
 import { getBoardSize } from '@antoinefricker/hextatic-core/src/geom/boardUtils';
 import { getHexSize, getHexSpacing } from '@antoinefricker/hextatic-core/src/geom/hexUtils';
 import { Container, Graphics } from 'pixi.js';
 
 import { Button } from './Button';
+import { CubicCoordsHelper } from './CubicCoordsHelper';
 import { DemoStrategy } from './demoStrategy/DemoStrategy';
 import { ResetOrigin } from './demoStrategy/ResetOrigin';
 import { ShowAxisDemo } from './demoStrategy/ShowAxis';
@@ -26,11 +35,15 @@ export class Board2D extends Container {
         this.demo = new DemoStrategy();
         this.setDemoMode('resetOrigin');
 
-        this._model = generateRectangularBoard(28, 11, 40);
+        this._model = generateHexBoard(6, 40);
 
         this.map = new Container();
         this.map.position.set(100, 100);
         this.addChild(this.map);
+
+        const helper = new CubicCoordsHelper();
+        helper.position.set(700, 50);
+        this.addChild(helper);
 
         const showAxisButton = new Button(160, 'Axis', () => this.setDemoMode('axis'));
         showAxisButton.position.set(10, 10);
@@ -44,6 +57,20 @@ export class Board2D extends Container {
         resetOriginButton.position.set(10, 70);
         this.addChild(resetOriginButton);
 
+        const rectBoardButton = new Button(160, 'Rectangular', () => {
+            this._model = generateRectangularBoard(11, 11, 40);
+            this.redrawCells();
+        });
+        rectBoardButton.position.set(10, 100);
+        this.addChild(rectBoardButton);
+
+        const hexBoardButton = new Button(160, 'Hexagonal', () => {
+            this._model = generateHexBoard(6, 40);
+            this.redrawCells();
+        });
+        hexBoardButton.position.set(10, 130);
+        this.addChild(hexBoardButton);
+
         this.redrawCells();
     }
 
@@ -51,7 +78,7 @@ export class Board2D extends Container {
         const hexSize = getHexSize(this._model.radius);
         const hexSpacing = getHexSpacing(this._model.radius);
 
-        const d2Coords = coords.cubicToGrid(vec3.add(cubicCoords, this.origin));
+        const d2Coords = coords.cubicToGrid(vec3.add(cubicCoords, this.model.origin));
         const position = vec2.multiply(d2Coords, [hexSpacing[0], 0.5 * hexSpacing[1]]);
         const offset = vec2.scale(hexSize, 0.5);
         return vec2.add(position, offset);
@@ -63,13 +90,6 @@ export class Board2D extends Container {
 
     public get cells(): Tile2D[] {
         return this._cells;
-    }
-
-    public get origin(): Vec3 {
-        return this._origin;
-    }
-    public set origin(v: Vec3) {
-        this._origin = vec3.clone(v);
     }
 
     public redrawCells(): void {
