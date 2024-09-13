@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { generateRectangularBoard } from './rectangularGenerator';
+import { generateRectangularBoard } from './boardUtils';
 
 describe('RectangularGenerator', () => {
     it('should generate a rectangular board of 2 x 2', () => {
