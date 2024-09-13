@@ -1,6 +1,8 @@
 # Hextatic
 
-An exploration of hexagonal grids
+An exploration of hexagonal grids.
+
+This library focuses on flat-top hexagons for many [reasons](./doc/thoughts/flat-vs-pointy.md) bu does not condamn further evolutions (PR welcomed).
 
 ## Installation
 
@@ -8,8 +10,8 @@ An exploration of hexagonal grids
 
 ## API documentation
 
-Work in progress documentation [here](doc/api/index.md)
+[Documentation](doc/api/index.md) is still wishfull thinking.
 
 ### Roadmap
 
-View complete [roadmap](./doc/roadmap/index.md)
+View [roadmap](./doc/roadmap/index.md)
