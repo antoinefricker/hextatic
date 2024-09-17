@@ -2,7 +2,7 @@
 
 An exploration of hexagonal grids.
 
-This library focuses on flat-top hexagons for many [reasons](./doc/thoughts/flat-vs-pointy.md) bu does not condamn further evolutions (PR welcomed).
+This library focuses on flat-top hexagons for many [reasons](./doc/thoughts/flat-vs-pointy.md) but does not condamn further evolutions.
 
 ## Installation
 
