@@ -1,6 +1,6 @@
 {
     "name": "hextatic",
-    "private": false,
+    "private": true,
     "version": "1.0.0",
     "description": "Basic tool for flat hexagonal grids",
     "main": "index.js",
