@@ -41,12 +41,12 @@ jobs:
       - name: ⚙️ Run Typecheck
         id: run_typecheck
         run: |
-          yarn --cwd packages/hextatic-core typecheck
+          yarn --cwd packages/hextatic typecheck
           yarn --cwd packages/hextatic-2d typecheck
 
       - name: 🧪 Run Unit Tests
         id: run_unit_tests
-        run: yarn --cwd packages/hextatic-core test
+        run: yarn --cwd packages/hextatic test
 
       - name: Action Report
         run: |
