@@ -1,5 +1,4 @@
-import { type Vec3 } from '@antoinefricker/hextatic-core';
-
+import { type Vec3 } from '../../../../hextatic/src';
 import { cubicSettings } from '../../constants';
 import { type Board2D } from '../Board2D';
 import { type IDemoStrategy } from './IDemoStrategy';

@@ -1,6 +1,6 @@
-import { hex, vec2, type Vec3 } from '@antoinefricker/hextatic-core';
 import { Container, Graphics } from 'pixi.js';
 
+import { hex, vec2, type Vec3 } from '../../../hextatic/src';
 import { CubicCoordsDebug } from './CubicCoordsDebug';
 
 export class Tile2D extends Container {

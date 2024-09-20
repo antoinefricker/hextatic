@@ -1,3 +1,5 @@
+import { Container, Graphics } from 'pixi.js';
+
 import {
     coords,
     generateHexBoard,
@@ -7,11 +9,9 @@ import {
     vec2,
     type Vec3,
     vec3,
-} from '@antoinefricker/hextatic-core';
-import { type Board } from '@antoinefricker/hextatic-core';
-import { getHexSize, getHexSpacing } from '@antoinefricker/hextatic-core/src/geom/hexUtils';
-import { Container, Graphics } from 'pixi.js';
-
+} from '../../../hextatic/src';
+import { type Board } from '../../../hextatic/src';
+import { getHexSize, getHexSpacing } from '../../../hextatic/src/geom/hexUtils';
 import { Button } from './Button';
 import { CubicCoordsHelper } from './CubicCoordsHelper';
 import { DemoStrategy } from './demoStrategy/DemoStrategy';

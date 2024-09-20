@@ -1,4 +1,4 @@
-import { type Vec3 } from '@antoinefricker/hextatic-core';
+import { type Vec3 } from '../../../../hextatic/src';
 
 export type IDemoStrategy = {
     onmouseover: (cubic: Vec3) => void;
