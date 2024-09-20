@@ -55,31 +55,3 @@ jobs:
           echo "| ⬇️ Install dependencies | ${{ steps.install_deps.conclusion }} |" >> $GITHUB_STEP_SUMMARY
           echo "| ⚙️ Run Check Typescripts | ${{ steps.run_typecheck.conclusion }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🧪 Run Unit Tests | ${{ steps.run_unit_tests.conclusion }} |" >> $GITHUB_STEP_SUMMARY
-
-  deploy:
-    name: Deploy after CI
-    runs-on: ubuntu-latest
-    needs: [test]
-    if: contains(fromJson('["refs/heads/develop", "refs/heads/main"]'), github.event.ref)
-    steps:
-      - name: 'Launch deploy'
-        run: |
-          case "${GITHUB_REF}" in
-            "refs/heads/develop")
-              ENV="dev"
-              ;;
-            "refs/heads/${MAIN_BRANCH_NAME}")
-              ENV="preprod"
-              ;;
-          esac
-          echo "gh workflow run deploy.yml --ref ${GITHUB_REF} -F branch_or_tag=${GITHUB_REF} -F environment=${ENV} -F skip_ci=false --repo=${GITHUB_REPOSITORY}"
-          gh workflow run "deploy.yml" \
-            --repo="${GITHUB_REPOSITORY}" \
-            --ref="${GITHUB_REF}" \
-            -F branch_or_tag="${GITHUB_REF}" \
-            -F environment="${ENV}" \
-            -F skip_ci="false"
-        env:
-          GITHUB_REF: ${{ github.event.ref }}
-          MAIN_BRANCH_NAME: ${{ needs.test.outputs.main_branch_name }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
