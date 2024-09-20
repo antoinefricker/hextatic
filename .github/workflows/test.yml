@@ -42,7 +42,7 @@ jobs:
         id: run_typecheck
         run: |
           yarn --cwd packages/hextatic typecheck
-          yarn --cwd packages/hextatic-2d typecheck
+          yarn --cwd packages/d2 typecheck
 
       - name: 🧪 Run Unit Tests
         id: run_unit_tests

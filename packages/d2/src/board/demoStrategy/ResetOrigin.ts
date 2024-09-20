@@ -1,5 +1,4 @@
-import { resetBoardOrigin, type Vec3 } from '@antoinefricker/hextatic-core';
-
+import { resetBoardOrigin, type Vec3 } from '../../../../hextatic/src';
 import { type Board2D } from '../Board2D';
 import { type IDemoStrategy } from './IDemoStrategy';
 

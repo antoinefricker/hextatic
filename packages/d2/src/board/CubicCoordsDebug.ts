@@ -1,6 +1,6 @@
-import { vec2, type Vec3 } from '@antoinefricker/hextatic-core';
 import { Container, Text, TextStyle } from 'pixi.js';
 
+import { vec2, type Vec3 } from '../../../hextatic/src';
 import { cubicSettings } from '../constants';
 
 export class CubicCoordsDebug extends Container {

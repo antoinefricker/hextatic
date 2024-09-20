@@ -1,5 +1,4 @@
-import { type Vec3 } from '@antoinefricker/hextatic-core';
-
+import { type Vec3 } from '../../../../hextatic/src';
 import { type IDemoStrategy } from './IDemoStrategy';
 
 export class DemoStrategy implements IDemoStrategy {
