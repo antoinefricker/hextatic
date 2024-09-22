@@ -33,6 +33,10 @@ export class Vec3 {
         return new Vec3(this.x - v.x, this.y - v.y, this.z - v.z);
     }
 
+    public toArray(): [number, number, number] {
+        return [this.x, this.y, this.z];
+    }
+
     static FromObj({ x, y, z }: Vec3Object): Vec3 {
         return new Vec3(x, y, z);
     }

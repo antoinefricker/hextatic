@@ -8,7 +8,7 @@ export class HexGridGenerator {
                 const x = j;
                 const z = i - Math.floor(j / 2);
                 const y = -x - z + 0; // prevent failure with -0
-                grid.coordinates.push(new Vec3(x, y, z));
+                grid.coords.push(new Vec3(x, y, z));
             }
         }
         return grid;
@@ -24,7 +24,7 @@ export class HexGridGenerator {
         const squareBoard = HexGridGenerator.GenerateRectangularBoard(squareSize, squareSize);
         return new HexGrid(
             squareBoard.origin,
-            squareBoard.coordinates.filter((coord) => Vec3.Distance(coord, squareCenter) < radius),
+            squareBoard.coords.filter((coord) => Vec3.Distance(coord, squareCenter) < radius),
             squareSize,
             squareSize,
         );

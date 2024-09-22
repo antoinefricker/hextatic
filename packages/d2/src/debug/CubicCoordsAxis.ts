@@ -1,17 +1,11 @@
 import { CubicCoords, Vec2 } from '@hextatic/hextatic';
 import { Container, Graphics, Text, TextStyle } from 'pixi.js';
 
-import { HexagonFlatGraphics } from '../graphics/HexagonFlatGraphics';
-
 export class CubicCoordsAxis extends Container {
     constructor() {
         super();
 
         const textRadius = 70;
-        const hexRadius = 100;
-
-        const hexagon = new HexagonFlatGraphics(0xffffff, hexRadius, 0.25);
-        this.addChild(hexagon);
 
         Object.keys(cubicCoordsDisplaySettings).forEach((key) => {
             const { theta, color } = cubicCoordsDisplaySettings[key];
@@ -31,7 +25,7 @@ export class CubicCoordsAxis extends Container {
         const label = new Text();
         label.text = content;
         label.style = new TextStyle({
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: 'bold',
             fill: color,
         });
@@ -44,7 +38,7 @@ class ArrowGraphics extends Graphics {
     constructor(color: number) {
         super();
 
-        this.moveTo(10, 0);
+        this.moveTo(0, 0);
         this.lineTo(50, 0);
         this.moveTo(40, -10);
         this.lineTo(50, 0);

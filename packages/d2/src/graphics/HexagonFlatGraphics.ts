@@ -1,9 +1,16 @@
 import { HexFlat } from '@hextatic/hextatic';
-import { Graphics } from 'pixi.js';
+import { Graphics, type StrokeStyle } from 'pixi.js';
 
 export class HexagonFlatGraphics extends Graphics {
-    constructor(color: number, radius: number, alpha = 1) {
+    constructor(radius: number, strokeStyle?: StrokeStyle) {
         super();
+
+        strokeStyle = {
+            color: 0xffffff,
+            width: 2,
+            alpha: 1,
+            ...strokeStyle,
+        };
 
         const corners = HexFlat.GetCorners(radius);
 
@@ -11,6 +18,6 @@ export class HexagonFlatGraphics extends Graphics {
             const { x, y } = corners[index % 6];
             index === 0 ? this.moveTo(x, y) : this.lineTo(x, y);
         }
-        this.stroke({ width: 2, color, alpha });
+        this.stroke(strokeStyle);
     }
 }

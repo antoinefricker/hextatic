@@ -1,5 +1,5 @@
 {
-    "name": "hextatic-2d",
+    "name": "@hextatic/d2",
     "description": "2D hexagonal tile engine",
     "private": true,
     "version": "0.0.0",
