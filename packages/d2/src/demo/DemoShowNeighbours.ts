@@ -1,7 +1,7 @@
 import { Vec3 } from '@hextatic/hextatic';
 
 import { type Board } from '../board/Board';
-import { type Tile } from '../board/Tile';
+import { Tile } from '../board/Tile';
 import { type IDemoStrategy } from './DemoStrategy';
 
 export class DemoShowNeighbours implements IDemoStrategy {
@@ -15,9 +15,12 @@ export class DemoShowNeighbours implements IDemoStrategy {
 
     public onmouseout(): void {}
 
-    public onmousedown(tile: Tile): void {
-        const _neighbours = Vec3.GetNeighbours(tile.coords);
-        // eslint-disable-next-line no-console
-        console.log({ _neighbours });
+    public onmousedown(sourceTile: Tile): void {
+        const neighbours = Vec3.GetNeighbours(sourceTile.coords).map(
+            (coord) => this._board.grid.coordsDict[coord.toString()],
+        );
+        this._board.tiles.map((tile, index) => {
+            tile.color = neighbours.includes(index) ? 0xc05682 : Tile.DefaultFillColor;
+        });
     }
 }
