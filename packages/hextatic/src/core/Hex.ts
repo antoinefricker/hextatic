@@ -1,6 +1,6 @@
 import { Vec2 } from '.';
 
-export class HexFlat {
+export class Hex {
     private static _hexFlatCorners: Vec2[];
 
     static GetSize(radius: number): Vec2 {

@@ -53,4 +53,6 @@ export class Vec2 {
     static FromPolarCoords(theta: number, radius: number): Vec2 {
         return new Vec2(Math.cos(theta) * radius, Math.sin(theta) * radius);
     }
+
+    static Zero = new Vec2(0, 0);
 }

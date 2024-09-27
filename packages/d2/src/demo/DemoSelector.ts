@@ -1,38 +1,71 @@
 import { Container } from 'pixi.js';
 
+import { type Board } from '../board/Board';
 import { Button } from '../ui/Button';
+import { DemoResetOrigin } from './DemoResetOrigin';
+import { DemoShowDistance } from './DemoShowDistance';
+import { DemoShowNeighbours } from './DemoShowNeighbours';
+import { type IDemoStrategy } from './DemoStrategy';
 
 export class DemoSelector extends Container {
-    constructor() {
+    private _board: Board;
+    private _demoTogglers: Button[] = [];
+
+    constructor(board: Board) {
         super();
 
-        this.position.set(20, 1000);
+        this._board = board;
 
-        const showAxisButton = new Button('Show axis', () => this._setDemoMode('showAxis'));
+        const showAxisButton = new Button(
+            'Show axis',
+            (toggleStatus: boolean) => (this._board.axis.visible = toggleStatus),
+            true,
+            this._board.axis.visible,
+        );
         showAxisButton.position.set(0, 0);
         this.addChild(showAxisButton);
 
-        const resetCenterButton = new Button('Reset center', () =>
-            this._setDemoMode('resetCenter'),
+        const resetCenterButton = new Button(
+            'Reset origin',
+            (status) =>
+                this._setDemoMode(status && new DemoResetOrigin(this._board), resetCenterButton),
+            true,
         );
         resetCenterButton.position.set(0, 40);
         this.addChild(resetCenterButton);
 
-        const showDistanceButton = new Button('Show distance', () =>
-            this._setDemoMode('showDistance'),
+        const showDistanceButton = new Button(
+            'Show distance',
+            (status) =>
+                this._setDemoMode(status && new DemoShowDistance(this._board), showDistanceButton),
+            true,
         );
-        showDistanceButton.position.set(0, 80);
+        showDistanceButton.position.set(0, 70);
         this.addChild(showDistanceButton);
 
-        const showNeighbours = new Button('Show neighbours', () =>
-            this._setDemoMode('showNeighbours'),
+        const showNeighboursButton = new Button(
+            'Show neighbours',
+            (status) =>
+                this._setDemoMode(
+                    status && new DemoShowNeighbours(this._board),
+                    showNeighboursButton,
+                ),
+            true,
         );
-        showNeighbours.position.set(0, 120);
-        this.addChild(showNeighbours);
+        showNeighboursButton.position.set(0, 100);
+        this.addChild(showNeighboursButton);
+
+        this._demoTogglers.push(resetCenterButton, showDistanceButton, showNeighboursButton);
     }
 
-    private _setDemoMode(mode: string) {
-        // eslint-disable-next-line no-console
-        console.log('Demo mode:', mode);
+    private _setDemoMode(mode: IDemoStrategy | false, button: Button) {
+        this._demoTogglers.forEach((toggler) => (toggler.toggled = false));
+        if (mode === false) {
+            this._board.demoStrategy.setStrategy(null);
+            return;
+        }
+
+        this._board.demoStrategy.setStrategy(mode);
+        button.toggled = true;
     }
 }

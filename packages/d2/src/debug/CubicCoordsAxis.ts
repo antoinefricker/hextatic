@@ -1,11 +1,11 @@
 import { CubicCoords, Vec2 } from '@hextatic/hextatic';
-import { Container, Graphics, Text, TextStyle } from 'pixi.js';
+import { Circle, Container, Graphics, Text, TextStyle } from 'pixi.js';
 
 export class CubicCoordsAxis extends Container {
     constructor() {
         super();
 
-        const textRadius = 70;
+        const textRadius = 68;
 
         Object.keys(cubicCoordsDisplaySettings).forEach((key) => {
             const { theta, color } = cubicCoordsDisplaySettings[key];
@@ -19,6 +19,9 @@ export class CubicCoordsAxis extends Container {
             arrow.rotation = theta;
             this.addChild(arrow);
         });
+
+        this.hitArea = new Circle(0, 0, textRadius);
+        this.cursor = 'pointer';
     }
 
     private createLabel(content: string, color: number): Text {
@@ -38,12 +41,12 @@ class ArrowGraphics extends Graphics {
     constructor(color: number) {
         super();
 
-        this.moveTo(0, 0);
+        this.moveTo(15, 0);
         this.lineTo(50, 0);
         this.moveTo(40, -10);
         this.lineTo(50, 0);
         this.lineTo(40, 10);
-        this.setStrokeStyle({ width: 4, color, alpha: 1, alignment: 0.5 });
+        this.setStrokeStyle({ width: 4, color, alpha: 1, alignment: 0.5, cap: 'round' });
         this.stroke();
     }
 }
