@@ -56,11 +56,11 @@ export class Tile extends Container {
             },
             {
                 color: Tile.DefaultFillColor,
-                alpha: 0.25,
+                alpha: 0.5,
             },
         );
         this.addChild(this._hexagon);
     }
 
-    static DefaultFillColor = 0x444444;
+    static DefaultFillColor = 0x888888;
 }

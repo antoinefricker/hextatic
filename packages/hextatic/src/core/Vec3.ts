@@ -37,6 +37,10 @@ export class Vec3 {
         return [this.x, this.y, this.z];
     }
 
+    public toString(): string {
+        return `${this.x},${this.y},${this.z}`;
+    }
+
     static FromObj({ x, y, z }: Vec3Object): Vec3 {
         return new Vec3(x, y, z);
     }

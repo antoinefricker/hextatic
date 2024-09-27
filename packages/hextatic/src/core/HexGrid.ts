@@ -4,7 +4,9 @@ export class HexGrid {
     /** cubic coordinates origin */
     public origin: Vec3;
     /** cubic coordinates */
-    public coords: Vec3[];
+    private _coords: Vec3[];
+    /** cubic coordinates dictionary */
+    private _coordsDict: Record<string, number>;
     /** width in tiles */
     public width: number;
     /** height in tiles */
@@ -15,6 +17,22 @@ export class HexGrid {
         this.coords = coords;
         this.width = width;
         this.height = height;
+    }
+
+    public get coords(): Vec3[] {
+        return this._coords;
+    }
+
+    public set coords(coords: Vec3[]) {
+        this._coords = coords;
+        this._coordsDict = {};
+        this._coords.forEach((coord, index) => {
+            this._coordsDict[coord.toString()] = index;
+        });
+    }
+
+    public get coordsDict(): Record<string, number> {
+        return this._coordsDict;
     }
 
     public resetCoordsOrigin(cubic: Vec3): void {
