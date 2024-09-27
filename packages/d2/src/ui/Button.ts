@@ -10,20 +10,38 @@ export class Button extends Container {
 
     private _onClick: (status: boolean) => void;
 
-    constructor(label: string, onClick: (status: boolean) => void, asToggler: boolean = false) {
+    constructor(
+        label: string,
+        onClick: (status: boolean) => void,
+        asToggler: boolean = false,
+        toggled: boolean = false,
+    ) {
         super();
 
         this._asToggler = asToggler;
+        this._toggled = toggled;
         this._onClick = onClick;
 
         this._build();
         this._text.text = label;
 
-        this.interactive = true;
-        this.cursor = 'pointer';
-        this.on('pointerdown', this._handleClick);
+        this._background.interactive = true;
+        this._background.cursor = 'pointer';
+        this._background.on('pointerdown', this._handleClick);
 
         this._redraw();
+    }
+
+    public set toggled(value: boolean) {
+        if (!this._asToggler) {
+            return;
+        }
+        this._toggled = value;
+        this._redraw();
+    }
+
+    public get toggled(): boolean {
+        return this._toggled && this._asToggler;
     }
 
     private _handleClick = () => {

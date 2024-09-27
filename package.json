@@ -18,7 +18,7 @@
         "typecheck": "yarn workspaces run typecheck",
         "prepare": "husky",
         "gh": "open https://github.com/antoinefricker/hextatic.git",
-        "d2": "yarn workspace d2 dev"
+        "d2": "yarn workspace @hextatic/d2 dev"
     },
     "husky": {
         "hooks": {

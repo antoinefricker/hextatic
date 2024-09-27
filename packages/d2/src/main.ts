@@ -1,15 +1,10 @@
 import './main.css';
 
-import { Application } from 'pixi.js';
+import { app } from './demo/DemoApplication';
 
-import { Board } from './board/Board';
+const main = async () => {
+    await app.build();
+    app.behave();
+};
 
-const app = new Application();
-await app.init({ background: 0xb3b4ad, antialias: true });
-document.body.appendChild(app.canvas);
-
-const resizeHandler = () => app.renderer.resize(window.innerWidth, window.innerHeight);
-window.addEventListener('resize', resizeHandler);
-resizeHandler();
-
-app.stage.addChild(new Board());
+main();

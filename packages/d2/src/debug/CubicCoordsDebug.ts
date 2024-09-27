@@ -20,7 +20,6 @@ export class CubicCoordsDebug extends Container {
         label.text = content;
         label.style = new TextStyle({
             fontSize: 14,
-            fontWeight: 'bold',
             fill: color,
         });
         label.anchor.set(0.5);
